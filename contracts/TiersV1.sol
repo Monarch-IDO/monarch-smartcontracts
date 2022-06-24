@@ -256,7 +256,7 @@ contract TiersV1 is IERC677Receiver, Initializable, ReentrancyGuardUpgradeable, 
         user.amounts[token] -= amount;
         user.lastWithdraw = block.timestamp;
 
-        // If token is XRUNE, donate, else send to DAO
+        // If token is MONARCH, donate, else send to DAO
         if (token == address(rewardToken)) {
             lastFeeGrowth += (half * PRECISION) / totalAmount();
             emit Donate(msg.sender, half);

@@ -1,13 +1,13 @@
 const hre = require("hardhat");
 
-const xruneContract = "0x0fe3ecd525d16fa09aa1ff177014de5304c835e2"; // ropsten
-// const xruneContract = "0x69fa0fee221ad11012bab0fdb45d444d3d2ce71c"; // mainnet
+const monarchContract = "0x0fe3ecd525d16fa09aa1ff177014de5304c835e2"; // ropsten
+// const monarchContract = "0x69fa0fee221ad11012bab0fdb45d444d3d2ce71c"; // mainnet
 
 async function main() {
   const signer = await ethers.getSigner();
   const Contract = await hre.ethers.getContractFactory("VestingDispenser");
   const args = [
-    xruneContract // xrune token
+    monarchContract // monarch token
   ];
   const contract = await Contract.deploy(...args, {
     //gasLimit: 5000000,

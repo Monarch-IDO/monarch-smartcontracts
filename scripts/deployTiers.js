@@ -6,7 +6,7 @@ async function main() {
   const args = [
     signer.address, // owner
     "0x29965c56D54e82EbC232E554F1218D881f89c904", // dao
-    "0x69fa0fee221ad11012bab0fdb45d444d3d2ce71c", // reward/xrune token
+    "0x69fa0fee221ad11012bab0fdb45d444d3d2ce71c", // reward/monarch token
     "0xEBCD3922A199cd1358277C6458439C13A93531eD", // voters token
   ];
 

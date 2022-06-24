@@ -1,12 +1,12 @@
 const hre = require("hardhat");
 
-// const xruneContract = "0x0fe3ecd525d16fa09aa1ff177014de5304c835e2"; // ropsten
-const xruneContract = "0x69fa0fee221ad11012bab0fdb45d444d3d2ce71c"; // mainnet
+// const monarchContract = "0x0fe3ecd525d16fa09aa1ff177014de5304c835e2"; // ropsten
+const monarchContract = "0x69fa0fee221ad11012bab0fdb45d444d3d2ce71c"; // mainnet
 
 async function main() {
   const Contract = await hre.ethers.getContractFactory("EmissionsSplitter");
   const args = [
-    xruneContract, // token
+    monarchContract, // token
     1630418400, // emissions start
     "0x5b1b8BdbcC534B17E9f8E03a3308172c7657F4a3", // dao
     "0xb90642fd1a7F39970C2643B57a71bC553F6EBDEd", // team

@@ -10,7 +10,9 @@
   },
   "scripts": {
     "test": "hardhat test",
-    "hardhat": "hardhat --help"
+    "compile": "hardhat compile",
+    "deploy": "hardhat run scripts/deploy.js"
+
   },
   "dependencies": {
     "@nomiclabs/hardhat-etherscan": "3.0.0",

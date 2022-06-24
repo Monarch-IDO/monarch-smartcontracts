@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 /*
-This contract receives XRUNE from the Thorstarter grants multisig and some
+This contract receives MONARCH from the Thorstarter grants multisig and some
 project tokens, then, when ready, an owner calls the `lock` method and both
 tokens are paired in an AMM and the LP tokens are locked in this contract.
 Over time, each party can claim their vested tokens. Each party is owed an

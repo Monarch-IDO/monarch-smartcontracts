@@ -11,11 +11,11 @@ const {
 
 describe("Staking", function() {
   before(async function() {
-    await prepare(this, ["XRUNE", "ERC20Mock", "Staking"]);
+    await prepare(this, ["MONARCH", "ERC20Mock", "Staking"]);
   });
 
   beforeEach(async function() {
-    await deploy(this, [["rewardToken", this.XRUNE, [this.dev.address]]]);
+    await deploy(this, [["rewardToken", this.MONARCH, [this.dev.address]]]);
 
     await deploy(this, [
       ["token", this.ERC20Mock, ["Token", "TKN", getBigNumber(10)]],

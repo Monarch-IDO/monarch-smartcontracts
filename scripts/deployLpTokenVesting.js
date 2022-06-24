@@ -1,14 +1,14 @@
 const hre = require("hardhat");
 
-// const xruneContract = "0x0fe3ecd525d16fa09aa1ff177014de5304c835e2"; // ropsten
+// const monarchContract = "0x0fe3ecd525d16fa09aa1ff177014de5304c835e2"; // ropsten
 // const sushiRouter = "0x1b02dA8Cb0d097eB8D57A175b88c7D8b47997506"; // ropsten
-const xruneContract = "0x69fa0fee221ad11012bab0fdb45d444d3d2ce71c"; // mainnet
+const monarchContract = "0x69fa0fee221ad11012bab0fdb45d444d3d2ce71c"; // mainnet
 const sushiRouter = "0xd9e1cE17f2641f24aE83637ab66a2cca9C378B9F"; // mainnet
 
 async function main() {
   const Contract = await hre.ethers.getContractFactory("LpTokenVesting");
   const args = [
-    xruneContract, // token
+    monarchContract, // token
     "0xa5f2211b9b8170f694421f2046281775e8468044", // offering token
     sushiRouter, // sushi router
     2592000, // vesting cliff (1 month)

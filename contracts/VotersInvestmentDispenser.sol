@@ -2,9 +2,9 @@
 pragma solidity ^0.8.0;
 
 /*
-This contract receives XRUNE tokens via the `deposit` method from the
+This contract receives MONARCH tokens via the `deposit` method from the
 `LpTokenVestingKeeper` contract and let's investors part of a given
-snapshot (of the vXRUNE/Voters contract) claim their share of that XRUNE.
+snapshot (of the vMONARCH/Voters contract) claim their share of that MONARCH.
 */
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
@@ -18,7 +18,7 @@ contract VotersInvestmentDispenser is AccessControl {
 
     bytes32 public constant ADMIN_ROLE = keccak256("ADMIN");
     bytes32 public constant CLAIMER_ROLE = keccak256("CLAIMER");
-    IERC20 public xruneToken;
+    IERC20 public monarchToken;
     IDAO public dao;
     mapping(uint => uint) public snapshotAmounts;
     mapping(uint => uint) public claimedAmountsTotals;
@@ -27,10 +27,10 @@ contract VotersInvestmentDispenser is AccessControl {
     event Claim(uint snapshotId, address user, uint amount, address to);
     event Deposit(uint snapshotId, uint amount);
 
-    constructor(address _xruneToken, address _dao) {
-        require(_xruneToken != address(0), "token !zero");
+    constructor(address _monarchToken, address _dao) {
+        require(_monarchToken != address(0), "token !zero");
         require(_dao != address(0), "dao !zero");
-        xruneToken = IERC20(_xruneToken);
+        monarchToken = IERC20(_monarchToken);
         dao = IDAO(_dao);
         _setRoleAdmin(ADMIN_ROLE, ADMIN_ROLE);
         _setRoleAdmin(CLAIMER_ROLE, ADMIN_ROLE);
@@ -61,7 +61,7 @@ contract VotersInvestmentDispenser is AccessControl {
         if (amount > 0) {
             claimedAmounts[snapshotId][user] += amount;
             claimedAmountsTotals[snapshotId] += amount;
-            xruneToken.safeTransfer(to, amount);
+            monarchToken.safeTransfer(to, amount);
             emit Claim(snapshotId, user, amount, to);
         }
     }
@@ -86,7 +86,7 @@ contract VotersInvestmentDispenser is AccessControl {
 
     // Used by LpTokenVestingKeeper
     function deposit(uint snapshotId, uint amount) external {
-        xruneToken.safeTransferFrom(msg.sender, address(this), amount);
+        monarchToken.safeTransferFrom(msg.sender, address(this), amount);
         snapshotAmounts[snapshotId] += amount;
         emit Deposit(snapshotId, amount);
     }

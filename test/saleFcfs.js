@@ -88,7 +88,7 @@ describe("SaleFcfs", function() {
 
     await advanceToTime(this.start + 4601);
 
-    await expectError("minimum 100 vXRUNE or staked", async () => {
+    await expectError("minimum 100 vMONARCH or staked", async () => {
       await this.paymentToken.connect(this.signers[1]).approve(this.sale.address, bn("1"));
       await this.sale.connect(this.signers[1]).deposit(bn("1"));
     });

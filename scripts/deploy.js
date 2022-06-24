@@ -19,7 +19,7 @@ async function main() {
     ]);
   }
 
-  const Token = await hre.ethers.getContractFactory("XRUNE");
+  const Token = await hre.ethers.getContractFactory("MONARCH");
   const signer = await hre.ethers.getSigner();
   const factory = new ethers.Contract(
     "0xce0042B868300000d44A59004Da54A005ffdcf9f",

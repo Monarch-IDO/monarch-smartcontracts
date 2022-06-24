@@ -80,8 +80,8 @@ main()
 
 /* approve
   const tokenAddress = "0x69fa0fee221ad11012bab0fdb45d444d3d2ce71c"; // mainnet
-  const XRUNE = await hre.ethers.getContractFactory("XRUNE");
-  const token = XRUNE.attach(tokenAddress);
+  const MONARCH = await hre.ethers.getContractFactory("MONARCH");
+  const token = MONARCH.attach(tokenAddress);
   await token.approve(
     "0x87CF821bc517b6e54EEC96c324ABae82E8285E7C",
     ethers.utils.parseEther("100000"),

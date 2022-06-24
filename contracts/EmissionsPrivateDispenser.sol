@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 /*
-This contract receives XRUNE from the `EmissionsSplitter` contract and allows
+This contract receives MONARCH from the `EmissionsSplitter` contract and allows
 private investors to claim their share of vested tokens. If they need to update
 their address the owner can do so for them.
 */

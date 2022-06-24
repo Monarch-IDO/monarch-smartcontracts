@@ -3,8 +3,8 @@ pragma solidity ^0.8.0;
 
 /*
 This contract claims amm lp shares from multiple `LpTokenVesting` contracts,
-removes liquidity, sells the non-XRUNE token, and distributes it's resulting
-XRUNE balance to an `VotersInvestmentDispenser` contract, a `Voters` contract,
+removes liquidity, sells the non-MONARCH token, and distributes it's resulting
+MONARCH balance to an `VotersInvestmentDispenser` contract, a `Voters` contract,
 the grants multisig and the DAO.
 */
 
@@ -22,7 +22,7 @@ contract LpTokenVestingKeeper {
 
     IVotersInvestmentDispenser public votersInvestmentDispenser;
     IUniswapV2Router public sushiRouter;
-    IERC20 public xruneToken;
+    IERC20 public monarchToken;
     IDAO public dao;
     address public grants;
     address public owner;
@@ -34,10 +34,10 @@ contract LpTokenVestingKeeper {
     event AddLpVester(address vester, uint snapshotId);
     event Claim(address vester, uint snapshotId, uint amount);
 
-    constructor(address _votersInvestmentDispenser, address _sushiRouter, address _xruneToken, address _dao, address _grants, address _owner) {
+    constructor(address _votersInvestmentDispenser, address _sushiRouter, address _monarchToken, address _dao, address _grants, address _owner) {
         votersInvestmentDispenser = IVotersInvestmentDispenser(_votersInvestmentDispenser);
         sushiRouter = IUniswapV2Router(_sushiRouter);
-        xruneToken = IERC20(_xruneToken);
+        monarchToken = IERC20(_monarchToken);
         dao = IDAO(_dao);
         grants = _grants;
         owner = _owner;
@@ -99,27 +99,27 @@ contract LpTokenVestingKeeper {
                 );
                 {
                     address[] memory path = new address[](2);
-                    path[0] = address(xruneToken) == token0 ? token1 : token0;
-                    path[1] = address(xruneToken);
-                    uint amountToSwap = address(xruneToken) == token0 ? amount1 : amount0;
+                    path[0] = address(monarchToken) == token0 ? token1 : token0;
+                    path[1] = address(monarchToken);
+                    uint amountToSwap = address(monarchToken) == token0 ? amount1 : amount0;
                     IERC20(path[0]).safeApprove(address(sushiRouter), amountToSwap);
                     sushiRouter.swapExactTokensForTokens(
                         amountToSwap, 0,
                         path, address(this), type(uint).max
                     );
                 }
-                uint amount = xruneToken.balanceOf(address(this));
+                uint amount = monarchToken.balanceOf(address(this));
 
-                xruneToken.safeApprove(address(votersInvestmentDispenser), (amount * 35) / 100);
+                monarchToken.safeApprove(address(votersInvestmentDispenser), (amount * 35) / 100);
                 votersInvestmentDispenser.deposit(lpVestersSnapshotIds[i], (amount * 35) / 100);
 
-                xruneToken.safeApprove(dao.voters(), (amount * 35) / 100);
+                monarchToken.safeApprove(dao.voters(), (amount * 35) / 100);
                 IVoters(dao.voters()).donate((amount * 35) / 100);
 
-                xruneToken.safeTransfer(grants, (amount * 5) / 100);
+                monarchToken.safeTransfer(grants, (amount * 5) / 100);
 
                 // Send the leftover 25% to the DAO
-                xruneToken.transfer(address(dao), xruneToken.balanceOf(address(this)));
+                monarchToken.transfer(address(dao), monarchToken.balanceOf(address(this)));
                 emit Claim(lpVesters[i], lpVestersSnapshotIds[i], amount);
             }
         }

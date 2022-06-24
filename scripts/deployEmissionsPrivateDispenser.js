@@ -3,8 +3,8 @@ const hre = require("hardhat");
 const parseUnits = ethers.utils.parseUnits;
 const formatUnits = ethers.utils.formatUnits;
 
-// const xruneContract = "0x0fe3ecd525d16fa09aa1ff177014de5304c835e2"; // ropsten
-const xruneContract = "0x69fa0fee221ad11012bab0fdb45d444d3d2ce71c"; // mainnet
+// const monarchContract = "0x0fe3ecd525d16fa09aa1ff177014de5304c835e2"; // ropsten
+const monarchContract = "0x69fa0fee221ad11012bab0fdb45d444d3d2ce71c"; // mainnet
 
 const investors = [
   {
@@ -183,7 +183,7 @@ async function main() {
     "EmissionsPrivateDispenser"
   );
   const args = [
-    xruneContract, // token
+    monarchContract, // token
     investors.map(i => i.address), // investor addresses
     investors.map(i => parseUnits(i.percent, 0)) // investor percentages (1e12 = 100%)
   ];

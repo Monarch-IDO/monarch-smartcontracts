@@ -54,7 +54,7 @@ contract ForgeV1 is Initializable, ERC20Vote, ReentrancyGuardUpgradeable, Access
         uint256 _shareBonusPer1MToken
     ) public initializer {
         __ReentrancyGuard_init();
-        __ERC20Vote_init("stakedXRUNE", "sXRUNE", 18);
+        __ERC20Vote_init("stakedMONARCH", "sMONARCH", 18);
         _setRoleAdmin(ADMIN_ROLE, ADMIN_ROLE);
         _setupRole(ADMIN_ROLE, _owner);
         unlockFeeRecipient = _unlockFeeRecipient;

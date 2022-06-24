@@ -6,7 +6,7 @@ async function main() {
   const args = [
     signer.address, // owner
     "0xAD921950386D6385221A9C3fd532d391288099BC", // unstake early wallet
-    "0xe1e6b01ae86ad82b1f1b4eb413b219ac32e17bf6", // xrune
+    "0xe1e6b01ae86ad82b1f1b4eb413b219ac32e17bf6", // monarch
     "15",
     "1095",
     "600000000",

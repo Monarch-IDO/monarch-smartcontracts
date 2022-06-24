@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 /*
-This contract receives XRUNE token emissions, approximately once a day. It
+This contract receives MONARCH token emissions, approximately once a day. It
 them allows it's `run` method to be called wich will split up it's current
 balance between the private investors, tema, dao and ecosystem
 contracts/addresses following their respective vesting curves.

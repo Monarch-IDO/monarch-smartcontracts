@@ -13,8 +13,8 @@ async function main() {
   await contract.deployed();
   console.log("Faucet deployed to:", contract.address);
 
-  const XRUNE = await hre.ethers.getContractFactory("XRUNE");
-  const token = XRUNE.attach(tokenAddress);
+  const MONARCH = await hre.ethers.getContractFactory("MONARCH");
+  const token = MONARCH.attach(tokenAddress);
   await token.approve(contract.address, ethers.utils.parseEther("100000"));
   console.log("Faucet approved for 100000 tokens");
 }

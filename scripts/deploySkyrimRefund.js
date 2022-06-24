@@ -572,7 +572,7 @@ async function main() {
 
   const Contract = await hre.ethers.getContractFactory("SkyrimRefund");
   const args = [
-    bn("0.931646972951", 12), // rate (4,658,242.429 XRUNE / 5M SKYRIM)
+    bn("0.931646972951", 12), // rate (4,658,242.429 MONARCH / 5M SKYRIM)
     '0x2610f0bfc21ef389fe4d03cfb7de9ac1e6c99d6e', // input token
     '0x69fa0fee221ad11012bab0fdb45d444d3d2ce71c', // output token
     root, // merkle tree root

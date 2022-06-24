@@ -143,7 +143,7 @@ describe("Voters", function() {
   });
 
   it("lockSslp", async function() {
-    // Make it look like the LP token has 100 XRUNE of liquidity
+    // Make it look like the LP token has 100 MONARCH of liquidity
     await this.token.transfer(this.tokenLp.address, parseUnits("100"));
 
     await this.tokenLp.approve(this.voters.address, parseUnits("125000000"));
@@ -170,7 +170,7 @@ describe("Voters", function() {
   });
 
   it("unlockSslp", async function() {
-    // Make it look like the LP token has 100 XRUNE of liquidity
+    // Make it look like the LP token has 100 MONARCH of liquidity
     await this.token.transfer(this.tokenLp.address, parseUnits("100"));
 
     await this.tokenLp.approve(this.voters.address, parseUnits("125000000"));
@@ -245,7 +245,7 @@ describe("Voters", function() {
     await this.voters.donate(parseUnits("1"));
     await this.voters.lock(parseUnits("1"));
 
-    // User should have 6 vXRUNE and no owned fee growth (but last fee growth snapshotted)
+    // User should have 6 vMONARCH and no owned fee growth (but last fee growth snapshotted)
     expect(await this.token.balanceOf(this.voters.address)).to.equal(
       parseUnits("7")
     );
@@ -253,7 +253,7 @@ describe("Voters", function() {
       parseUnits("6")
     );
 
-    // Now the user should be owed 1 XRUNE (they own 100% of the supply)
+    // Now the user should be owed 1 MONARCH (they own 100% of the supply)
     await this.voters.donate(parseUnits("1"));
     expect(await this.token.balanceOf(this.voters.address)).to.equal(
       parseUnits("8")

@@ -1,7 +1,7 @@
 const hre = require("hardhat");
 
-// const xruneContract = "0x0fe3ecd525d16fa09aa1ff177014de5304c835e2"; // ropsten
-const xruneContract = "0x69fa0fee221ad11012bab0fdb45d444d3d2ce71c"; // mainnet
+// const monarchContract = "0x0fe3ecd525d16fa09aa1ff177014de5304c835e2"; // ropsten
+const monarchContract = "0x69fa0fee221ad11012bab0fdb45d444d3d2ce71c"; // mainnet
 
 async function main() {
   const signer = await ethers.getSigner();
@@ -9,7 +9,7 @@ async function main() {
     "VotersInvestmentDispenser"
   );
   const args = [
-    xruneContract, // xrune token
+    monarchContract, // monarch token
     "0x5b1b8BdbcC534B17E9f8E03a3308172c7657F4a3" // dao
   ];
   const contract = await Contract.deploy(...args, {

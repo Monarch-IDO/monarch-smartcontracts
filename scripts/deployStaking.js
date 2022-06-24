@@ -26,9 +26,9 @@ async function main() {
   }
 
   await staking.add(100, tokenAddress);
-  console.log("Staking XRUNE pool added");
+  console.log("Staking MONARCH pool added");
 
-  const Token = await hre.ethers.getContractFactory("XRUNE");
+  const Token = await hre.ethers.getContractFactory("MONARCH");
   const token = Token.attach(tokenAddress);
   await token.approve(staking.address, ethers.utils.parseEther("1000000"));
   console.log("Staking approved for 1000000 tokens");

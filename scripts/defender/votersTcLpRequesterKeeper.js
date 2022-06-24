@@ -19,7 +19,7 @@ const abiVoters = [
   "function updateTclp(address[] users, uint256[] amounts, uint256[] values)"
 ];
 
-const poolName = 'ETH.XRUNE-0X69FA0FEE221AD11012BAB0FDB45D444D3D2CE71C';
+const poolName = 'ETH.MONARCH-0X69FA0FEE221AD11012BAB0FDB45D444D3D2CE71C';
 const apiUrl = 'https://midgard.thorchain.info/v2';
 
 async function fetchUserUnits(address) {
@@ -37,7 +37,7 @@ async function fetchUserUnits(address) {
 }
 
 exports.handler = async function (event) {
-  const xrunePool = await httpRequest(apiUrl + '/pool/' + poolName);
+  const monarchPool = await httpRequest(apiUrl + '/pool/' + poolName);
   const users = [];
   const amounts = [];
   const values = [];
@@ -55,8 +55,8 @@ exports.handler = async function (event) {
     try {
       const userUnits = await fetchUserUnits(address);
       if (userUnits.gt(0)) {
-        const poolUnits = parseUnits(xrunePool.units, 18 - 8);
-        const poolAsset = parseUnits(xrunePool.assetDepth, 18 - 8).mul(2);
+        const poolUnits = parseUnits(monarchPool.units, 18 - 8);
+        const poolAsset = parseUnits(monarchPool.assetDepth, 18 - 8).mul(2);
         values.push(userUnits.mul(poolAsset).div(poolUnits));
         users.push(address);
         amounts.push(userUnits);
@@ -70,7 +70,7 @@ exports.handler = async function (event) {
   }
   
   // Fetch historical pool members
-  const result = await httpRequest('https://thorstarter-xrune-liquidity.herokuapp.com/get-all');
+  const result = await httpRequest('https://thorstarter-monarch-liquidity.herokuapp.com/get-all');
   const addressesToUnits = result.units;
   const addressesToUnitsVoters = result.voters;
   const addresses = Object.keys(addressesToUnits);

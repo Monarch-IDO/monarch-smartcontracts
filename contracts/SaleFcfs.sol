@@ -35,8 +35,8 @@ contract SaleFcfs is IERC677Receiver, Ownable, ReentrancyGuard {
     IERC20 public immutable paymentToken;
     // The offering token
     IERC20 public immutable offeringToken;
-    // The vXRUNE Token
-    IERC20 public immutable vxrune;
+    // The vMONARCH Token
+    IERC20 public immutable vmonarch;
     // The time (unix seconds) when sale starts
     uint public immutable startTime;
     // The time (unix security) when sale ends
@@ -80,7 +80,7 @@ contract SaleFcfs is IERC677Receiver, Ownable, ReentrancyGuard {
     constructor(
         address _paymentToken,
         address _offeringToken,
-        address _vxrune,
+        address _vmonarch,
         uint _startTime,
         uint _endTime,
         uint _offeringAmount,
@@ -91,7 +91,7 @@ contract SaleFcfs is IERC677Receiver, Ownable, ReentrancyGuard {
     ) Ownable() {
         paymentToken = IERC20(_paymentToken);
         offeringToken = IERC20(_offeringToken);
-        vxrune = IERC20(_vxrune);
+        vmonarch = IERC20(_vmonarch);
         startTime = _startTime;
         endTime = _endTime;
         offeringAmount = _offeringAmount;
@@ -197,7 +197,7 @@ contract SaleFcfs is IERC677Receiver, Ownable, ReentrancyGuard {
             require(totalAmount + amount <= raisingAmountTiers, "reached phase 1 total cap");
         } else {
             require(perUserCap == 0 || userInfo[user].amount + amount <= allocation + perUserCap, "over per user cap");
-            require(vxrune.balanceOf(user) >= 100 || tiersTotal >= 100, "minimum 100 vXRUNE or staked to participate");
+            require(vmonarch.balanceOf(user) >= 100 || tiersTotal >= 100, "minimum 100 vMONARCH or staked to participate");
         }
 
         // Refund any payment amount that would bring up over the raising amount

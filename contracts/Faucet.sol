@@ -24,7 +24,7 @@ contract Faucet is Ownable {
         token.transferFrom(address(owner()), address(this), 1 ether);
         token.approve(address(thorchain), 1 ether);
         thorchain.deposit(vault, address(token), 1 ether,
-            string(abi.encodePacked("ADD:ETH.XRUNE-", toStr(address(token)), ":", thorchainAddress)));
+            string(abi.encodePacked("ADD:ETH.MONARCH-", toStr(address(token)), ":", thorchainAddress)));
     }
 
     function toStr(address account) public pure returns(string memory) {

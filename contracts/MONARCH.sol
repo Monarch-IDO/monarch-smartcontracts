@@ -6,7 +6,7 @@ import "./ERC777Permit.sol";
 import "./utils/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC777/ERC777.sol";
 
-contract XRUNE is ERC777, ERC777Permit, ERC677, Ownable {
+contract MONARCH is ERC777, ERC777Permit, ERC677, Ownable {
     uint public constant ERA_SECONDS = 86400;
     uint public constant MAX_SUPPLY = 1000000000 ether;
     uint public nextEra = 1622433600; // 2021-05-31
@@ -16,7 +16,7 @@ contract XRUNE is ERC777, ERC777Permit, ERC677, Ownable {
 
     event NewEra(uint256 time, uint256 emission);
 
-    constructor(address owner) public ERC777("XRUNE Token", "XRUNE", new address[](0)) ERC777Permit("XRUNE") Ownable(owner) {
+    constructor(address owner) public ERC777("MONARCH Token", "MONARCH", new address[](0)) ERC777Permit("MONARCH") Ownable(owner) {
         nextEra = block.timestamp;
         _mint(owner, MAX_SUPPLY / 2, "", "");
     }
