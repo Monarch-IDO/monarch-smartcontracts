@@ -4,6 +4,7 @@ require("@openzeppelin/hardhat-upgrades");
 
 require("@nomiclabs/hardhat-solhint");
 require("solidity-coverage");
+require("dotenv/config");
 
 if (process.env.GAS_REPORT === "true") {
   require("hardhat-gas-reporter");

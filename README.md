@@ -1,6 +1,6 @@
-## ThorStarter Contracts
+## Monarch Contracts
 
-This repository contains the ThorStarter Token, Faucet and Staking contracts
+This repository contains the Monarch Token, Faucet and Staking contracts
 used for the TGE & sale.
 
 We're working on building out our IDO platform & governance, those contracts will
