@@ -12,11 +12,15 @@ async function main() {
     "0x95cfa1f48fad82232772d3b1415ad4393517f3b5", // SLP
   ];
   */
-  const args = [
-    signer.address, // owner
-    "0x0fe3ecd525d16fa09aa1ff177014de5304c835e2", // token ropsten
-    "0x5609d36b2cde5775ed5fedf4a4ed86ea0ece5705" // SLP
-  ];
+  var args;
+  if (hre.network.name == "ropsten"){
+    args = [
+      signer.address, // owner
+      "0xAEDaD96D39C8B24de359417e0de1140cADFAc517", // token ropsten
+      "0x79Bd5fa6dD9E6932E78C49912a753dd9c9957df5" // SLP
+    ];
+  }
+  
   const contract = await Contract.deploy(...args, {
     //gasLimit: 3500000,
     //gasPrice: ethers.utils.parseUnits("150", "gwei")

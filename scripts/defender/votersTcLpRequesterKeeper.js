@@ -70,7 +70,7 @@ exports.handler = async function (event) {
   }
   
   // Fetch historical pool members
-  const result = await httpRequest('https://thorstarter-monarch-liquidity.herokuapp.com/get-all');
+  const result = await httpRequest('https://Monarch-monarch-liquidity.herokuapp.com/get-all');
   const addressesToUnits = result.units;
   const addressesToUnitsVoters = result.voters;
   const addresses = Object.keys(addressesToUnits);

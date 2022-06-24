@@ -6,7 +6,7 @@ async function main() {
     ethers.utils.formatBytes32String('ETH').slice(0, 2+8), // source
     ethers.utils.hexZeroPad('0x69fa0feE221AD11012BAb0FdB45d444D3D2Ce71c', 32), // source address
     18, // decimals
-    'Thorstarter Token',
+    'Monarch Token',
     'MONARCH',
   ];
   const contract = await Contract.deploy(...args);

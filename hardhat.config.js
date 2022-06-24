@@ -36,35 +36,35 @@ module.exports = {
   networks: {
     ropsten: {
       url: "https://ropsten.infura.io/v3/" + process.env.INFURA_PROJECT_ID,
-      accounts: [process.env.THORSTARTER_TESTING_PRIVATE_KEY]
+      accounts: [process.env.Monarch_TESTING_PRIVATE_KEY]
     },
     rinkeby: {
       url: "https://rinkeby.infura.io/v3/" + process.env.INFURA_PROJECT_ID,
-      accounts: [process.env.THORSTARTER_TESTING_PRIVATE_KEY]
+      accounts: [process.env.Monarch_TESTING_PRIVATE_KEY]
     },
     mainnet: {
       url: "https://mainnet.infura.io/v3/" + process.env.INFURA_PROJECT_ID,
-      accounts: [process.env.THORSTARTER_DEPLOYER_PRIVATE_KEY]
+      accounts: [process.env.Monarch_DEPLOYER_PRIVATE_KEY]
     },
     arbitrum: {
       url: "https://arb1.arbitrum.io/rpc", // 42161
-      accounts: [process.env.THORSTARTER_DEPLOYER_PRIVATE_KEY]
+      accounts: [process.env.Monarch_DEPLOYER_PRIVATE_KEY]
     },
     fantom: {
       url: "https://rpc.fantom.network", // 250
-      accounts: [process.env.THORSTARTER_DEPLOYER_PRIVATE_KEY]
+      accounts: [process.env.Monarch_DEPLOYER_PRIVATE_KEY]
     },
     polygon: {
       url: "https://polygon-rpc.com", // 137
-      accounts: [process.env.THORSTARTER_DEPLOYER_PRIVATE_KEY]
+      accounts: [process.env.Monarch_DEPLOYER_PRIVATE_KEY]
     },
     avalanche: {
       url: "https://api.avax.network/ext/bc/C/rpc", // 43114
-      accounts: [process.env.THORSTARTER_DEPLOYER_PRIVATE_KEY]
+      accounts: [process.env.Monarch_DEPLOYER_PRIVATE_KEY]
     },
     bsc: {
       url: "https://bsc-dataseed1.ninicoin.io", // 56
-      accounts: [process.env.THORSTARTER_DEPLOYER_PRIVATE_KEY]
+      accounts: [process.env.Monarch_DEPLOYER_PRIVATE_KEY]
     }
   },
   etherscan: {

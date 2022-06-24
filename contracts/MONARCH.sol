@@ -18,7 +18,7 @@ contract MONARCH is ERC777, ERC777Permit, ERC677, Ownable {
 
     constructor(address owner) public ERC777("MONARCH Token", "MONARCH", new address[](0)) ERC777Permit("MONARCH") Ownable(owner) {
         nextEra = block.timestamp;
-        _mint(owner, MAX_SUPPLY / 2, "", "");
+        _mint(owner, MAX_SUPPLY / 2, "", ""); //500M
     }
 
     function setCurve(uint _curve) public onlyOwner {

@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 /*
 This contract allows MONARCH holders and LPs to lock some of their tokens up for
-vMONARCH, the Thorstarter DAO's voting token. It's an ERC20 but without the
+vMONARCH, the Monarch DAO's voting token. It's an ERC20 but without the
 transfer methods.
 It supports snapshoting and delegation of voting power.
 */
@@ -36,7 +36,7 @@ contract Voters is IVoters, IERC677Receiver, AccessControl {
     event Snapshot(uint id);
     event DelegateChanged(address indexed delegator, address indexed fromDelegate, address indexed toDelegate);
 
-    string public constant name = "Thorstarter Voting Token";
+    string public constant name = "Monarch Voting Token";
     string public constant symbol = "vMONARCH";
     uint8 public constant decimals = 18;
     bytes32 public constant ADMIN_ROLE = keccak256("ADMIN");
