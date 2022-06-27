@@ -14,7 +14,8 @@
     "deployToken": "hardhat run scripts/deployToken.js --network ropsten",
     "verifyToken": "npx hardhat verify --network ropsten 0xAEDaD96D39C8B24de359417e0de1140cADFAc517 0xc3DE43e835Cf52514a21074DE870C056707d4427",
     "deployVoters": "npx hardhat run scripts/deployVoters.js --network ropsten",
-    "deployTiers": "npx hardhat run scripts/deployTiers.js --network ropsten"
+    "deployTiers": "npx hardhat run scripts/deployTiers.js --network ropsten",
+    "deploySalesTier": "npx hardhat run scripts/deploySale.js --network ropsten"
 
 
   },
