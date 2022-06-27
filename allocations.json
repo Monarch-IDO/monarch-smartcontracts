@@ -1,0 +1,16 @@
+[
+  {
+    "address": "0xC61Adc553F01fad7f302C65806693034a91166B8",
+    "amount": "10.0",
+    "proof": [
+      "0xdac052552f8bdb865ebdfee5053c718f6725141a2bc493adb1225d186d988cba"
+    ]
+  },
+  {
+    "address": "0xc3DE43e835Cf52514a21074DE870C056707d4427",
+    "amount": "1000.0",
+    "proof": [
+      "0xf4124b32f82f5b1495af02aa92470d8cad131ba0e622f24e1a7c32faf7c5dc07"
+    ]
+  }
+]
