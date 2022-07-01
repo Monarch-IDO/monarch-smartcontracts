@@ -25,6 +25,9 @@ contract TokenPriceHelper {
         } else {
             ethPrice = (balance0 * 1e18) / balance1;
         }
+        if (token == weth9){
+            return ethPrice;
+        }
 
         IUniswapV2Pair pair = IUniswapV2Pair(factory.getPair(weth9, token));
         if (address(pair) == address(0)) {

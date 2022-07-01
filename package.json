@@ -16,7 +16,9 @@
     "deployVoters": "npx hardhat run scripts/deployVoters.js --network ropsten",
     "deployTiers": "npx hardhat run scripts/deployTiers.js --network ropsten",
     "deploySalesTier": "npx hardhat run scripts/deploySale.js --network ropsten",
-    "deployForge": "npx hardhat run scripts/deployForge.js --network ropsten"
+    "deployForge": "npx hardhat run scripts/deployForge.js --network ropsten",
+    "deployTokenPriceHelper": "npx hardhat run scripts/deployTokenPriceHelper.js --network ropsten"
+
 
 
   },
