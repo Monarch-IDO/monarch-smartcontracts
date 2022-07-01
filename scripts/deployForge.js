@@ -2,11 +2,14 @@ const hre = require("hardhat");
 
 async function main() {
   const signer = await ethers.getSigner();
+  console.log("Deploying contracts with the account:", signer.address);
+  console.log("Account balance:", (await signer.getBalance()).toString());
+  
   const Contract = await hre.ethers.getContractFactory("ForgeV1");
   const args = [
     signer.address, // owner
-    "0xAD921950386D6385221A9C3fd532d391288099BC", // unstake early wallet
-    "0xe1e6b01ae86ad82b1f1b4eb413b219ac32e17bf6", // monarch
+    "0xc3DE43e835Cf52514a21074DE870C056707d4427", // unstake early wallet
+    "0xAEDaD96D39C8B24de359417e0de1140cADFAc517", // monarch
     "15",
     "1095",
     "600000000",
