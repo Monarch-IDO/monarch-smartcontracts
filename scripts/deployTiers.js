@@ -21,12 +21,13 @@ async function main() {
 
   let contract;
   let contractAddress;
-  if (hre.network.name !== "pulse"){
-    contract = await upgrades.deployProxy(Contract, args);
+  if (hre.network.name !== "hardhat"){
+    contract = await upgrades.deployProxy(Contract, args, {initializer: 'initialize'});
     await contract.deployed();
 
     contractAddress = await ethers.provider.getStorageAt(contract.address, '0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc');
     contractAddress = '0x' + contractAddress.slice(26);
+    console.log("Contract address: ", contract.address, contractAddress);
   }else{
     contract = await Contract.deploy(...args, {
       //gasLimit: 3500000,
@@ -49,8 +50,8 @@ async function main() {
     try {
       await new Promise(resolve => setTimeout(resolve, 20000));
       await hre.run('verify', {
-        address: contractAddress,
-        constructorArgsParams: args
+        address: contractAddress
+        // constructorArgsParams: []
       })
     } catch (error) {
       console.log(`Smart contract at address ${contract.address} is already verified`)

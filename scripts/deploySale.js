@@ -48,26 +48,26 @@ async function main() {
   const Contract = await hre.ethers.getContractFactory("SaleTiers");
   const now = (Date.now() / 1000) | 0;
   const args = [
-    "0x2791bca1f2de4661ed88a30c99a7a9449aa84174", // payment token  USDC
-    "0x095EE7e82206EAA02741fdDdC07f5bb2Cb3C248c", // offering token DOM
+    "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48", // payment token  USDC
+    "0x368921F71d98B152705C2DA4292E415E2dedf5b0", // offering token DOM
     root, // merkle tree root
-    1657875600, // start time  2022, 7, 15, 9, 0, 0
-    1659193200, // end time    2022, 7, 30, 15, 0, 0
+    1656838800, // start time  datetime.timestamp( datetime(2022, 7, 3, 9, 0, 0))
+    1657011600, // end time    datetime.timestamp( datetime(2022, 7, 5, 9, 0, 0))
     parseUnits("25000000"), // offerring amount
     parseUnits("300000", 6), // raising amount       -----price 0.012USDC
-    1659258000, // vesting start   2022, 7, 31, 9, 0, 0
-    parseUnits("0.1", 12), // vesting initial
-    parseUnits("7776000", 0), // vesting duration    ----90 days
+    1657098000, // vesting start   datetime.timestamp( datetime(2022, 7, 6, 9, 0, 0))
+    parseUnits("0.2", 12), // vesting initial
+    parseUnits("259200", 0), // vesting duration    ----3 days
   ];
-  const contract = await Contract.deploy(...args, {
+  let contract = await Contract.deploy(...args, {
     // gasLimit: 2500000,
     // gasPrice: parseUnits("9000", "gwei")
   });
   await contract.deployed();
-  // const contract = { address: "0x798d0d1716ed93306d7576D595A16658f1Fba31e" };
+  // contract = { address: "0x503AB6600E60533328f47c949C2132e0DFdbacE9" };
   console.log(contract.address, args);
   if (hre.network.name !== "hardhat") {
-    //await new Promise((resolve) => setTimeout(resolve, 30000));
+    await new Promise((resolve) => setTimeout(resolve, 60000));
     await hre.run("verify:verify", {
       address: contract.address,
       constructorArguments: args,
