@@ -13,10 +13,17 @@ async function main() {
   // ];
 
   // ropsten
+  // const args = [
+  //   "0xc778417e063141139fce010982780140aa0cd5ab", // weth9
+  //   "0xc2118d4d90b274016cb7a54c03ef52e6c537d957", // dai
+  //   "0xc35dadb65012ec5796536bd9864ed8773abc74c4", // factory
+  // ];
+
+  // pulse
   const args = [
-    "0xc778417e063141139fce010982780140aa0cd5ab", // weth9
-    "0xc2118d4d90b274016cb7a54c03ef52e6c537d957", // dai
-    "0xc35dadb65012ec5796536bd9864ed8773abc74c4", // factory
+    "0x8a810ea8B121d08342E9e7696f4a9915cBE494B7", // Wrapped Pulse
+    "0x6B175474E89094C44Da98b954EedeAC495271d0F", // dai
+    "0xb242aa8a863cfce9fcba2b9a6b00b4cd62343f27", // factory
   ];
   
 
