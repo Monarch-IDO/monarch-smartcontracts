@@ -9,7 +9,7 @@ async function main() {
   const args = [
     signer.address, // owner
     "0xc3DE43e835Cf52514a21074DE870C056707d4427", // unstake early wallet
-    "0xAEDaD96D39C8B24de359417e0de1140cADFAc517", // monarch
+    "0x0985E7E1B67d7a370659e890169922b5EC9c0024", // monarch
     "15",
     "1095",
     "600000000",
@@ -24,14 +24,22 @@ async function main() {
     "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc"
   );
   contractAddress = "0x" + contractAddress.slice(26);
-  if (hre.network.name !== "hardhat") {
+
+  console.log("Contract deployed to:", contract.address, contractAddress);
+
+  if (hre.network.name !== "pulse") {
     await new Promise(resolve => setTimeout(resolve, 20000));
     await hre.run("verify:verify", {
       address: contractAddress,
       constructorArguments: []
     });
+  }else{
+    await new Promise((resolve) => setTimeout(resolve, 20000));
+    await hre.run("verify", {
+      address: contractAddress,
+      constructorArgsParams: [],
+    });
   }
-  console.log("Contract deployed to:", contract.address, contractAddress);
   // Use https://ropsten.etherscan.io/proxyContractChecker to finish verifying contract
 }
 
