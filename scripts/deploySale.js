@@ -51,26 +51,34 @@ async function main() {
     "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48", // payment token  USDC
     "0x368921F71d98B152705C2DA4292E415E2dedf5b0", // offering token DOM
     root, // merkle tree root
-    1656838800, // start time  datetime.timestamp( datetime(2022, 7, 3, 9, 0, 0))
-    1657011600, // end time    datetime.timestamp( datetime(2022, 7, 5, 9, 0, 0))
-    parseUnits("25000000"), // offerring amount
-    parseUnits("300000", 6), // raising amount       -----price 0.012USDC
-    1657098000, // vesting start   datetime.timestamp( datetime(2022, 7, 6, 9, 0, 0))
-    parseUnits("0.2", 12), // vesting initial
-    parseUnits("259200", 0), // vesting duration    ----3 days
+    "1656838800", // start time  datetime.timestamp( datetime(2022, 7, 3, 9, 0, 0))
+    "1657011600", // end time    datetime.timestamp( datetime(2022, 7, 5, 9, 0, 0))
+    parseUnits("25000000").toString(), // offerring amount
+    parseUnits("300000", 6).toString(), // raising amount       -----price 0.012USDC
+    "1657098000", // vesting start   datetime.timestamp( datetime(2022, 7, 6, 9, 0, 0))
+    parseUnits("0.2", 12).toString(), // vesting initial
+    "259200", // vesting duration    ----3 days
   ];
-  let contract = await Contract.deploy(...args, {
+  deployedAddress = "0x503AB6600E60533328f47c949C2132e0DFdbacE9";
+  const contract = Contract.attach(deployedAddress);
+  // let contract = await Contract.deploy(...args, {
     // gasLimit: 2500000,
     // gasPrice: parseUnits("9000", "gwei")
-  });
-  await contract.deployed();
-  // contract = { address: "0x503AB6600E60533328f47c949C2132e0DFdbacE9" };
+  // });
+  // await contract.deployed();
+
   console.log(contract.address, args);
-  if (hre.network.name !== "hardhat") {
-    await new Promise((resolve) => setTimeout(resolve, 60000));
+  if (hre.network.name !== "pulse") {
+    await new Promise((resolve) => setTimeout(resolve, 20000));
     await hre.run("verify:verify", {
       address: contract.address,
       constructorArguments: args,
+    });
+  }else{
+    await new Promise((resolve) => setTimeout(resolve, 20000));
+    await hre.run("verify", {
+      address: contract.address,
+      constructorArgsParams: args,
     });
   }
   console.log("Contract deployed to:", contract.address);
