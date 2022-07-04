@@ -18,9 +18,17 @@
     "deploySalesTier": "npx hardhat run scripts/deploySale.js --network ropsten",
     "deployForge": "npx hardhat run scripts/deployForge.js --network ropsten",
     "deployTokenPriceHelper": "npx hardhat run scripts/deployTokenPriceHelper.js --network ropsten",
-    "deployStaking": "npx hardhat run scripts/deployStaking.js --network ropsten"
+    "deployStaking": "npx hardhat run scripts/deployStaking.js --network ropsten",
 
+    "deployTokenToPulse": "hardhat run scripts/deployToken.js --network pulse",
+    "verifyTokenToPulse": "npx hardhat verify --network pulse 0x0985E7E1B67d7a370659e890169922b5EC9c0024 0xc3DE43e835Cf52514a21074DE870C056707d4427",
+    "deployVotersToPulse": "npx hardhat run scripts/deployVoters.js --network pulse",
 
+    "deployTiersToPulse": "npx hardhat run scripts/deployTiers.js --network pulse",
+    "deploySalesTierToPulse": "npx hardhat run scripts/deploySale.js --network pulse",
+    "deployForgeToPulse": "npx hardhat run scripts/deployForge.js --network pulse",
+    "deployTokenPriceHelperToPulse": "npx hardhat run scripts/deployTokenPriceHelper.js --network pulse",
+    "deployStakingToPulse": "npx hardhat run scripts/deployStaking.js --network pulse"
 
   },
   "dependencies": {

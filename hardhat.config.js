@@ -10,6 +10,15 @@ if (process.env.GAS_REPORT === "true") {
   require("hardhat-gas-reporter");
 }
 
+const { chainConfig } = require("@nomiclabs/hardhat-etherscan/dist/src/ChainConfig");
+chainConfig['pulse'] = {
+  chainId: 941,
+  urls: {
+    apiURL: "https://scan.v2b.testnet.pulsechain.com/api",
+    browserURL: "https://scan.v2b.testnet.pulsechain.com",
+  },
+}
+
 module.exports = {
   solidity: {
     compilers: [
@@ -64,6 +73,10 @@ module.exports = {
     },
     bsc: {
       url: "https://bsc-dataseed1.ninicoin.io", // 56
+      accounts: [process.env.Monarch_DEPLOYER_PRIVATE_KEY]
+    },
+    pulse: {
+      url: "https://rpc.v2b.testnet.pulsechain.com", //941
       accounts: [process.env.Monarch_DEPLOYER_PRIVATE_KEY]
     }
   },
