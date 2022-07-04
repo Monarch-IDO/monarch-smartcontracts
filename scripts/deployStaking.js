@@ -5,6 +5,7 @@ async function main() {
   //const tokenAddress = "0x69fa0fee221ad11012bab0fdb45d444d3d2ce71c"; // mainnet
   // const tokenAddress = "0xAEDaD96D39C8B24de359417e0de1140cADFAc517"; // ropsten
   const tokenAddress = "0x0985E7E1B67d7a370659e890169922b5EC9c0024"; // pulse
+  const plpAddress = "0xB8a3626Fcb9337eC779F369D02531b714305d51b"; // plp
   const deployedAddress = "0x973c12E86C3a92402Bc9635A077d18F437Dd42fD"; // ropsten
 
   const signer = await hre.ethers.getSigner();
@@ -32,6 +33,7 @@ async function main() {
   }
 
   await staking.add(100, tokenAddress);
+  await staking.add(100, plpAddress);
   console.log("Staking MONARCH pool added");
 
   const Token = await hre.ethers.getContractFactory("MONARCH");
