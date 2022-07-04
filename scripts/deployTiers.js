@@ -28,34 +28,14 @@ async function main() {
     contractAddress = await ethers.provider.getStorageAt(contract.address, '0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc');
     contractAddress = '0x' + contractAddress.slice(26);
     console.log("Contract address: ", contract.address, contractAddress);
-  }else{
-    contract = await Contract.deploy(...args, {
-      //gasLimit: 3500000,
-      //gasPrice: ethers.utils.parseUnits("150", "gwei")
-    });
-    await contract.deployed();
-    console.log(args);
-
-    contractAddress = contract.address;
   }
 
-  if (hre.network.name !== "pulse") {
+  if (hre.network.name !== "hardhat") {
     await new Promise(resolve => setTimeout(resolve, 20000));
     await hre.run("verify:verify", {
       address: contractAddress,
       constructorArguments: [],
     });
-  }
-  else{
-    try {
-      await new Promise(resolve => setTimeout(resolve, 20000));
-      await hre.run('verify', {
-        address: contractAddress
-        // constructorArgsParams: []
-      })
-    } catch (error) {
-      console.log(`Smart contract at address ${contract.address} is already verified`)
-    }
   }
   console.log("Contract deployed to:", contract.address, contractAddress);
   // Use https://ropsten.etherscan.io/proxyContractChecker to finish verifying contract

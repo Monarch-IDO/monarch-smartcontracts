@@ -68,17 +68,11 @@ async function main() {
   // await contract.deployed();
 
   console.log(contract.address, args);
-  if (hre.network.name !== "pulse") {
+  if (hre.network.name !== "hardhat") {
     await new Promise((resolve) => setTimeout(resolve, 20000));
     await hre.run("verify:verify", {
       address: contract.address,
       constructorArguments: args,
-    });
-  }else{
-    await new Promise((resolve) => setTimeout(resolve, 20000));
-    await hre.run("verify", {
-      address: contract.address,
-      constructorArgsParams: args,
     });
   }
   console.log("Contract deployed to:", contract.address);

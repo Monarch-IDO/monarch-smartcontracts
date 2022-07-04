@@ -33,12 +33,6 @@ async function main() {
       address: contractAddress,
       constructorArguments: []
     });
-  }else{
-    await new Promise((resolve) => setTimeout(resolve, 20000));
-    await hre.run("verify", {
-      address: contractAddress,
-      constructorArgsParams: [],
-    });
   }
   // Use https://ropsten.etherscan.io/proxyContractChecker to finish verifying contract
 }
