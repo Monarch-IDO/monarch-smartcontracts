@@ -9,16 +9,19 @@ import "@openzeppelin/contracts/token/ERC777/ERC777.sol";
 contract MONARCH is ERC777, ERC777Permit, ERC677, Ownable {
     uint public constant ERA_SECONDS = 86400;
     uint public constant MAX_SUPPLY = 1000000000 ether;
-    uint public nextEra = 1622433600; // 2021-05-31
-    uint public curve = 1024;
-    bool public emitting = false;
-    address public reserve = address(0);
+    uint nextEra;
+    uint curve = 1024;
+    bool emitting = true;
+    address reserve;
 
     event NewEra(uint256 time, uint256 emission);
 
-    constructor(address owner) public ERC777("MONARCH Token", "MONARCH", new address[](0)) ERC777Permit("MONARCH") Ownable(owner) {
+    constructor(address owner) ERC777("MONARCH Token", "MONARCH", new address[](0)) ERC777Permit("MONARCH") Ownable(owner) {
         nextEra = block.timestamp;
-        _mint(owner, MAX_SUPPLY / 2, "", ""); //500M
+        curve = 1024;
+        emitting = true;
+        reserve = msg.sender;
+        _mint(owner, MAX_SUPPLY / 2, "", "");
     }
 
     function setCurve(uint _curve) public onlyOwner {
@@ -38,12 +41,6 @@ contract MONARCH is ERC777, ERC777Permit, ERC677, Ownable {
         // solhint-disable-next-line not-rely-on-time
         require(next > nextEra && next > block.timestamp, "next era needs to be in the future");
         nextEra = next;
-    }
-
-    function _beforeTokenTransfer(address operator, address from, address to, uint amount) internal virtual override {
-        super._beforeTokenTransfer(operator, from, to, amount);
-        require(to != address(this), "!self");
-        dailyEmit();
     }
 
     function dailyEmit() public {
